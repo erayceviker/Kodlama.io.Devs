@@ -22,6 +22,11 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         return await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
     }
 
+    public async Task<TEntity?> GetAsyncAsNoTracking(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await Context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(predicate);
+    }
+
     public async Task<IPaginate<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
                                                        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy =
                                                            null,

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Core.CrossCuttingConcers.Exceptions;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -85,7 +86,7 @@ public class ExceptionMiddleware
     {
         context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
 
-        return context.Response.WriteAsync(new ProblemDetails
+        return context.Response.WriteAsync(new InternalProblemDetails
         {
             Status = StatusCodes.Status500InternalServerError,
             Type = "https://example.com/probs/internal",

@@ -24,5 +24,20 @@ namespace Application.Features.ProgrammingLanguages.Rules
             IPaginate<ProgrammingLanguage> result = await _programmingLanguageRepository.GetListAsync(p => p.Name == name);
             if (result.Items.Any()) throw new BusinessException("Programming Language name exists.");
         }
+
+        public async Task ProgrammingLanguageIsExistOrNot(int id)
+        {
+            ProgrammingLanguage programmingLanguage = await _programmingLanguageRepository.GetAsync(p=> p.Id == id);
+
+            if (programmingLanguage == null) throw new BusinessException("Programming Language is not found");
+        }
+
+        public async Task ProgrammingLanguageIsExistOrNotAsNoTracking(int id)
+        {
+            ProgrammingLanguage programmingLanguage = await _programmingLanguageRepository.GetAsyncAsNoTracking(p => p.Id == id);
+
+            if (programmingLanguage == null) throw new BusinessException("Programming Language is not found");
+        }
+
     }
 }
