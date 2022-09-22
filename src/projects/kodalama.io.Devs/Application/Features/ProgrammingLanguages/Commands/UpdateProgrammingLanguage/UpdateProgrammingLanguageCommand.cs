@@ -33,7 +33,7 @@ namespace Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLa
             public async Task<Unit> Handle(UpdateProgrammingLanguageCommand request, CancellationToken cancellationToken)
             {
 
-                await _programmingLanguageBusinessRules.ProgrammingLanguageIsExistOrNotAsNoTracking(request.Id);
+                await _programmingLanguageBusinessRules.ProgrammingLanguageShouldExistWhenRequestedAsNoTracking(request.Id);
 
                 await _programmingLanguageBusinessRules.ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 

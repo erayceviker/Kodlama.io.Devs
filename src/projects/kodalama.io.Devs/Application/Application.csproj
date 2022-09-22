@@ -14,8 +14,6 @@
 
   <ItemGroup>
     <Folder Include="Features\ProgrammingLanguages\Contants\" />
-    <Folder Include="Features\ProgrammingLanguages\Models\" />
-    <Folder Include="Features\ProgrammingLanguages\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

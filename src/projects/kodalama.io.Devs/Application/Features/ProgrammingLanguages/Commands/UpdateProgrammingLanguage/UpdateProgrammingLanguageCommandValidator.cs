@@ -14,6 +14,7 @@ namespace Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLa
         {
             RuleFor(p => p.Id).NotEmpty();
             RuleFor(p => p.Name).NotEmpty();
+            RuleFor(p => p.Name).MinimumLength(2);
         }
     }
 }
