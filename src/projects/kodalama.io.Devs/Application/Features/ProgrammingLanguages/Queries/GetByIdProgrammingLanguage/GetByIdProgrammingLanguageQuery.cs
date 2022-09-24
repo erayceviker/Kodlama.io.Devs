@@ -34,7 +34,7 @@ namespace Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLa
 
                 await _programmingLanguageBusinessRules.ProgrammingLanguageShouldExistWhenRequested(request.Id);
 
-                ProgrammingLanguage programmingLanguage = _programmingLanguageRepository.Get(p => p.Id == request.Id);
+                ProgrammingLanguage programmingLanguage = await _programmingLanguageRepository.GetAsync(p => p.Id == request.Id);
 
                 var mappedGetByIdDto = _mapper.Map<GetByIdDto>(programmingLanguage);
 

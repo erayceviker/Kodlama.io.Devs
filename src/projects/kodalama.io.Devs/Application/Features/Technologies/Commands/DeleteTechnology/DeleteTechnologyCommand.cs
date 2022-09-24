@@ -27,7 +27,7 @@ namespace Application.Features.Technologies.Commands.DeleteTechnology
 
             public async Task<Unit> Handle(DeleteTechnologyCommand request, CancellationToken cancellationToken)
             {
-                await _technologyBusinessRules.ProgrammingLanguageShouldExistWhenRequested(request.Id);
+                await _technologyBusinessRules.TechnologyShouldExistWhenRequested(request.Id);
 
                 Technology technology = await _technologyRepository.GetAsync(x=> x.Id == request.Id);
 

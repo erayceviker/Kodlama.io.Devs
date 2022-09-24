@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using FluentValidation;
 
 namespace Application.Features.Technologies.Commands.UpdateTechnology
@@ -12,9 +13,9 @@ namespace Application.Features.Technologies.Commands.UpdateTechnology
         public UpdateTechnologyCommandValidator()
         {
             RuleFor(x=>x.Id).NotEmpty();
-            RuleFor(x=>x.ProgrammingLanguageId).NotEmpty();
-            RuleFor(x => x.Name).NotEmpty();
-            RuleFor(x => x.Name).MinimumLength(2);
+            RuleFor(x=>x.Body.ProgrammingLanguageId).NotEmpty();
+            RuleFor(x => x.Body.Name).NotEmpty();
+            RuleFor(x => x.Body.Name).MinimumLength(2);
         }
     }
 }

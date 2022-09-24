@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Features.Technologies.Dtos;
 using Application.Features.Technologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Features.Technologies.Commands.UpdateTechnology
 {
     public class UpdateTechnologyCommand : IRequest
     {
+        [FromRoute]
         public int Id { get; set; }
-        public int ProgrammingLanguageId { get; set; }
-        public string Name { get; set; }
+
+        [FromBody]
+        public UpdateTechnologyBodyDto Body { get; set; }
 
         public class UpdateTechnologyCommandHandler : IRequestHandler<UpdateTechnologyCommand>
         {
@@ -31,12 +35,14 @@ namespace Application.Features.Technologies.Commands.UpdateTechnology
 
             public async Task<Unit> Handle(UpdateTechnologyCommand request, CancellationToken cancellationToken)
             {
-                await _technologyBusinessRules.ProgrammingLanguageShouldExistWhenRequested(request.Id);
-                await _technologyBusinessRules.ProgrammingLanguageNameCanNotBeDuplicated(request.Name);
+                await _technologyBusinessRules.TechnologyShouldExistWhenRequested(request.Id);
 
-                Technology mappedTechnology = _mapper.Map<Technology>(request);
+                await _technologyBusinessRules.TechnologyNameCanNotBeDuplicatedWhenUpdated(request.Id, request.Body.Name);
 
-                Technology technology = await _technologyRepository.UpdateAsync(mappedTechnology);
+                Technology mappedUpdateTechnologyBodyDto = _mapper.Map<Technology>(request.Body);
+                mappedUpdateTechnologyBodyDto.Id = request.Id;
+
+                await _technologyRepository.UpdateAsync(mappedUpdateTechnologyBodyDto);
 
                 return Unit.Value;
 

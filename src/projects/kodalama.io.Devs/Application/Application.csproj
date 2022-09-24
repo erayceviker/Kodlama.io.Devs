@@ -15,8 +15,6 @@
   <ItemGroup>
     <Folder Include="Features\ProgrammingLanguages\Contants\" />
     <Folder Include="Features\Technologies\Contants\" />
-    <Folder Include="Features\Technologies\Models\" />
-    <Folder Include="Features\Technologies\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
