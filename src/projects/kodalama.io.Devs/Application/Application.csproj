@@ -14,12 +14,9 @@
 
   <ItemGroup>
     <Folder Include="Features\ProgrammingLanguages\Contants\" />
-    <Folder Include="Features\Technologies\Commands\DeleteTechnology\" />
-    <Folder Include="Features\Technologies\Commands\UpdateTechnology\" />
     <Folder Include="Features\Technologies\Contants\" />
     <Folder Include="Features\Technologies\Models\" />
     <Folder Include="Features\Technologies\Queries\" />
-    <Folder Include="Features\Technologies\Profiles\" />
   </ItemGroup>
 
   <ItemGroup>

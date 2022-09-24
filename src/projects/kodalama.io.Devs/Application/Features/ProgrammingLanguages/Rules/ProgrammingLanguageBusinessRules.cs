@@ -27,14 +27,7 @@ namespace Application.Features.ProgrammingLanguages.Rules
 
         public async Task ProgrammingLanguageShouldExistWhenRequested(int id)
         {
-            ProgrammingLanguage programmingLanguage = await _programmingLanguageRepository.GetAsync(p=> p.Id == id);
-
-            if (programmingLanguage == null) throw new BusinessException("Requested Programming Language does not exist");
-        }
-
-        public async Task ProgrammingLanguageShouldExistWhenRequestedAsNoTracking(int id)
-        {
-            ProgrammingLanguage programmingLanguage = await _programmingLanguageRepository.GetAsyncAsNoTracking(p => p.Id == id);
+            ProgrammingLanguage programmingLanguage = await _programmingLanguageRepository.GetAsyncAsNoTracking(p=> p.Id == id);
 
             if (programmingLanguage == null) throw new BusinessException("Requested Programming Language does not exist");
         }

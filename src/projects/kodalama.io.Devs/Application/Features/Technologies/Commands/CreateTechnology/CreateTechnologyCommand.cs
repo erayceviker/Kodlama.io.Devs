@@ -14,6 +14,7 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
 {
     public class CreateTechnologyCommand : IRequest<CreatedTechnologyDto>
     {
+        public int ProgrammingLanguageId { get; set; }
         public string Name { get; set; }
 
         public class CreateTechnologyCommandHandler : IRequestHandler<CreateTechnologyCommand, CreatedTechnologyDto>
@@ -21,9 +22,17 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
             private readonly ITechnologyRepository _technologyRepository;
             private readonly IMapper _mapper;
             private readonly TechnologyBusinessRules _technologyBusinessRules;
+
+            public CreateTechnologyCommandHandler(TechnologyBusinessRules technologyBusinessRules, ITechnologyRepository technologyRepository, IMapper mapper)
+            {
+                _technologyBusinessRules = technologyBusinessRules;
+                _technologyRepository = technologyRepository;
+                _mapper = mapper;
+            }
+
             public async Task<CreatedTechnologyDto> Handle(CreateTechnologyCommand request, CancellationToken cancellationToken)
             {
-                await _technologyBusinessRules.ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
+                await _technologyBusinessRules.ProgrammingLanguageNameCanNotBeDuplicated(request.Name);
 
                 Technology mappedTechnology = _mapper.Map<Technology>(request);
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Services.Repositories;
@@ -19,7 +20,7 @@ namespace Application.Features.Technologies.Rules
             _technologyRepository = technologyRepository;
         }
 
-        public async Task ProgrammingLanguageNameCanNotBeDuplicatedWhenInserted(string name)
+        public async Task ProgrammingLanguageNameCanNotBeDuplicated(string name)
         {
             IPaginate<Technology> result = await _technologyRepository.GetListAsync(x => x.Name == name, enableTracking: false);
 
@@ -31,12 +32,13 @@ namespace Application.Features.Technologies.Rules
 
         public async Task ProgrammingLanguageShouldExistWhenRequested(int id)
         {
-            Technology result = await _technologyRepository.GetAsync(x => x.Id == id);
+            Technology result = await _technologyRepository.GetAsyncAsNoTracking(x => x.Id == id);
 
             if (result == null)
             {
                 throw new BusinessException("Requested Technology does not exist");
             }
         }
+
     }
 }
