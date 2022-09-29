@@ -26,6 +26,7 @@ namespace Persistence.Contexts
             Configuration = configuration;
         }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProgrammingLanguage>(p =>

@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Services.Auth;
 using Application.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Repositories;
+using Persistence.Services;
 
 namespace Persistence
 {
@@ -22,6 +24,7 @@ namespace Persistence
                     configuration.GetConnectionString("ProgrammingLanguageConnectionString")));
             services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
             services.AddScoped<ITechnologyRepository, TechnologyRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
