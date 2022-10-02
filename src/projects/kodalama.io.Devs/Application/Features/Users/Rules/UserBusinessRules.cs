@@ -48,5 +48,12 @@ namespace Application.Features.Users.Rules
             }
         }
 
+        public async Task UserShouldExistWhenRequested(int id)
+        {
+            var user = await _userRepository.GetAsyncAsNoTracking(x => x.Id == id);
+
+            if (user == null) throw new  BusinessException("Requested User does not exist");
+        }
+
     }
 }

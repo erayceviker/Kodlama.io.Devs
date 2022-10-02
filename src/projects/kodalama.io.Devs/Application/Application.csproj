@@ -16,10 +16,6 @@
     <Folder Include="Features\ProgrammingLanguages\Contants\" />
     <Folder Include="Features\Technologies\Contants\" />
     <Folder Include="Features\Users\Contants\" />
-    <Folder Include="Features\Users\Dtos\" />
-    <Folder Include="Features\Users\Models\" />
-    <Folder Include="Features\Users\Queries\" />
-    <Folder Include="Features\Users\Profiles\" />
   </ItemGroup>
 
   <ItemGroup>
