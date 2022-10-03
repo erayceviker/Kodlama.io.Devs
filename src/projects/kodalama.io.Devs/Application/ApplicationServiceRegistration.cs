@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Features.OperationClaims.Rules;
 using Application.Features.ProgrammingLanguages.Rules;
 using Application.Features.Technologies.Rules;
 using Application.Features.Users.Rules;
@@ -29,6 +30,8 @@ namespace Application
             services.AddScoped<ProgrammingLanguageBusinessRules>();
             services.AddScoped<TechnologyBusinessRules>();
             services.AddScoped<UserBusinessRules>();
+            services.AddScoped<OperationClaimBusinessRules>();
+
             services.AddScoped<ITokenHelper, JwtHelper>();
             services.AddScoped<IAuthService, AuthService>();
 

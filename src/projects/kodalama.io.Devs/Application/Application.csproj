@@ -13,8 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\OperationClaims\Contants\" />
     <Folder Include="Features\ProgrammingLanguages\Contants\" />
     <Folder Include="Features\Technologies\Contants\" />
+    <Folder Include="Features\UserOperationClaims\Commands\" />
+    <Folder Include="Features\UserOperationClaims\Contants\" />
+    <Folder Include="Features\UserOperationClaims\Dtos\" />
+    <Folder Include="Features\UserOperationClaims\Models\" />
+    <Folder Include="Features\UserOperationClaims\Rules\" />
+    <Folder Include="Features\UserOperationClaims\Queries\" />
+    <Folder Include="Features\UserOperationClaims\Profiles\" />
     <Folder Include="Features\Users\Contants\" />
   </ItemGroup>
 
