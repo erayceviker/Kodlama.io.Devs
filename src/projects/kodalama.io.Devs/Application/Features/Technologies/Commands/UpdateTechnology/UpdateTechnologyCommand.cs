@@ -39,10 +39,11 @@ namespace Application.Features.Technologies.Commands.UpdateTechnology
 
                 await _technologyBusinessRules.TechnologyNameCanNotBeDuplicatedWhenUpdated(request.Id, request.Body.Name);
 
-                Technology mappedUpdateTechnologyBodyDto = _mapper.Map<Technology>(request.Body);
-                mappedUpdateTechnologyBodyDto.Id = request.Id;
+                var technology = await _technologyRepository.GetAsync(x => x.Id == request.Id);
 
-                await _technologyRepository.UpdateAsync(mappedUpdateTechnologyBodyDto);
+                technology = _mapper.Map(request.Body, technology);
+
+                await _technologyRepository.UpdateAsync(technology);
 
                 return Unit.Value;
 

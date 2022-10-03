@@ -40,8 +40,7 @@ namespace Application.Features.Users.Commands.UpdateUser
 
                 User user = await _userRepository.GetAsync(x => x.Id == request.Id);
 
-                user.FirstName = request.updateUserBodyDto.FirstName;
-                user.LastName = request.updateUserBodyDto.LastName;
+                user = _mapper.Map(request.updateUserBodyDto, user);
 
                 await _userRepository.UpdateAsync(user);
 
